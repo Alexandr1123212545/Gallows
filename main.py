@@ -16,7 +16,7 @@ start = 0
 screen = pygame.display.set_caption('HangMan')
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 font_1 = pygame.font.SysFont('italic', 40)
-font_2 = pygame.font.SysFont('italic', 120)
+font_2 = pygame.font.SysFont('italic', 100)
 font_3 = pygame.font.SysFont('italic', 80)
 
 back_ground = pygame.image.load(f'image/image_0{start}.jpg')
@@ -62,7 +62,8 @@ while True:
                 start, message = 0, 0
                 clue, word, secret_word = generate_word()
                 entered_let = []
-            if btn_ok.collidepoint(event.pos):
+                back_ground = pygame.image.load(f'image/image_0{start}.jpg')
+            if btn_ok.collidepoint(event.pos) and game:
                 message = 0
                 if user_input in word or user_input in entered_let:
                     message = 4
@@ -99,7 +100,7 @@ while True:
                 user_input = user_input[:-1]
             else:
                 user_input += event.unicode.upper()
-            
+    
 
     clock.tick(20)
     screen.blit(back_ground, (0, 0))
